@@ -9,6 +9,9 @@ include
 *.obj
 *.elf
 
+# Coverage files
+*.gcno
+
 # Precompiled Headers
 *.gch
 *.pch

@@ -31,7 +31,11 @@ fi
 
 ./configure --enable-silent-rules ${enable_disable_str} 
 make clean
-make
+if [[ ${LCOV} == 1 ]]; then 
+  make V=1 CFLAGS="-fPIC -fprofile-arcs -ftest-coverage -g -O0" CCASFLAGS="-fPIC -fprofile-arcs -ftest-coverage -g -O0" 
+else 
+  make 
+fi
 make test
 for f in $(ls .travis/*-check.sh); do bash $f; done
 
